@@ -6,9 +6,10 @@ using namespace std;
 
 int main()
 {
-    string str = "poprobuem";
+    string str = "poprobuem", tesum = "123456";
 
     sortKB(str);
 
-    cout << str << endl;
+
+    cout << str << endl << StSum(tesum) << endl;
 }

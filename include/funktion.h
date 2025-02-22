@@ -26,6 +26,37 @@ void sortKB(string &str)
 
     str = "";
     for(const string& s : split) {
-        str += s; // собираем результат в строку
+        str += s; 
     }
 }
+
+int StSum(string str){
+    int sum = 0;
+    for (char c : str)
+    {
+        if(c < 48 and c > 57){
+            cerr << "Error: Uncorrect word, not always symbols are number";
+            abort();
+        }
+        sum += c - '0';
+    }
+
+    return sum;
+}
+
+int StSum(string str){
+    
+    vector<char> split;
+    for (char c : str)
+    {
+        if(c < 48 and c > 57){
+            cerr << "Error: Uncorrect word, not always symbols are number";
+            abort();
+        }
+        //split.push_back(c);
+        sum += c - '0';
+    }
+
+    return sum;
+}
+
