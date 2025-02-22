@@ -44,19 +44,13 @@ int StSum(string str){
     return sum;
 }
 
-int StSum(string str){
-    
-    vector<char> split;
-    for (char c : str)
+int Lestr(string str){
+    if(str.length() > 2 and str.length()%32 == 0)
     {
-        if(c < 48 and c > 57){
-            cerr << "Error: Uncorrect word, not always symbols are number";
-            abort();
-        }
-        //split.push_back(c);
-        sum += c - '0';
+        return 1;
     }
-
-    return sum;
+    else{
+        return 0;
+    }
 }
 
