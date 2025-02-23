@@ -37,7 +37,7 @@ void sortKB(string &str)
     cv.notify_one();
 }
 
-int StSum(string str){
+string StSum(string str){
     int sum = 0;
     for (char c : str)
     {
@@ -47,7 +47,7 @@ int StSum(string str){
         sum += c - '0';
     }
 
-    return sum;
+    return to_string(sum);
 }
 
 int Lestr(string str){

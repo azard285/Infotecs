@@ -13,7 +13,7 @@ bool data_ready = false;
 string all_data;
 
 void sortKB(string &str);
-int StSum(string str);
+string StSum(string str);
 int Lestr(string str);
 
 #endif
