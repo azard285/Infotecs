@@ -8,6 +8,7 @@ using namespace std;
 
 void sortKB(string &str)
 {
+    unique_lock<mutex> lock(mtx);
     vector<string> split;
 
     for (char c : str)
@@ -27,23 +28,21 @@ void sortKB(string &str)
     }
 
     str = "";
+    all_data = "";
     for(const string& s : split) {
-        str += s; 
+        str += s;
+        all_data += s; 
     }
+    data_ready = true;
+    cv.notify_one();
 }
 
 int StSum(string str){
     int sum = 0;
-    if(str.length() > 64)
-    {
-            cerr << "Error: so long word. Can be >64";
-            abort();
-    }
     for (char c : str)
     {
         if(c < 48 and c > 57){
-            cerr << "Error: Uncorrect word, not always symbols are number";
-            abort();
+            continue;
         }
         sum += c - '0';
     }
