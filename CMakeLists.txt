@@ -10,7 +10,7 @@ include_directories(include)
 add_library(funktion SHARED src/funktion.cpp)
 
 # Создайте исполняемую программу
-add_executable(prog1 src/prog1.cpp)
+add_executable(prog1 src/prog1.cpp src/prog2.cpp)
 
 # Свяжите исполняемую программу с библиотекой
 target_link_libraries(prog1 PRIVATE funktion)

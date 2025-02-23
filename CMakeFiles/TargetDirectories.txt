@@ -1,4 +1,0 @@
-/home/azard/hueta/Infotecs/CMakeFiles/funktion.dir
-/home/azard/hueta/Infotecs/CMakeFiles/prog1.dir
-/home/azard/hueta/Infotecs/CMakeFiles/edit_cache.dir
-/home/azard/hueta/Infotecs/CMakeFiles/rebuild_cache.dir

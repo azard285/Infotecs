@@ -2,17 +2,16 @@
 #include <string>
 #include <thread>
 #include <mutex>
+#include <cstring>
 #include <arpa/inet.h>
 #include <sys/socket.h>
 #include <unistd.h>
 #include "funktion.h"
 
-const int PORT = 8080;
 const int BUFFER_SIZE = 64;
 
 int main() {
-    while(1){
-        int sock = 0;
+    int sock = 0;
         struct sockaddr_in serv_addr;
         char buffer[BUFFER_SIZE] = {0};
 
@@ -21,6 +20,7 @@ int main() {
             return -1;
         }
 
+        memset(&serv_addr, 0, sizeof(serv_addr));
         serv_addr.sin_family = AF_INET;
         serv_addr.sin_port = htons(PORT);
 
@@ -29,21 +29,23 @@ int main() {
             return -1;
         }
 
+        
+
+    while(1){
+        
         if (connect(sock, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) < 0) {
             perror("connect failed");
             return -1;
         }
-
-        int valread = recv(sock, buffer, BUFFER_SIZE, 0);
+        recv(sock, buffer, BUFFER_SIZE, 0);
         if (Lestr(buffer)) {
             cout << "Получено:" << buffer << endl;
         }
         else{
             cout << "Ошибка, введено не то правильное число" << endl;
         }
-
-        close(sock);
-
-        return 0;
     }
+
+    close(sock);
+    return 0;
 }

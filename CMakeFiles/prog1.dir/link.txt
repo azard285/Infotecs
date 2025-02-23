@@ -1,1 +1,0 @@
-/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/prog1.dir/link.d CMakeFiles/prog1.dir/src/prog1.cpp.o -o prog1  -Wl,-rpath,/home/azard/hueta/Infotecs libfunktion.so
