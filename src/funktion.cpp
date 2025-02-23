@@ -16,13 +16,14 @@ void sortKB(string &str)
         split.push_back(l);
     }
 
-    sort(split.begin(), split.end());
+    sort(split.begin(), split.end(), [](string a, string b){return a > b;});
 
-    int elem = str.length() % 2 == 0 ? str.length() : str.length() - 1;
-
-    for(int i = 1; i <= elem; i+=2)
+    for(int i = 0; i < split.size(); i++)
     {
+        if(stoi(split[i])%2 == 0)
+        {
         split[i] = "KB";
+        }
     }
 
     str = "";
@@ -33,6 +34,11 @@ void sortKB(string &str)
 
 int StSum(string str){
     int sum = 0;
+    if(str.length() > 64)
+    {
+            cerr << "Error: so long word. Can be >64";
+            abort();
+    }
     for (char c : str)
     {
         if(c < 48 and c > 57){
@@ -46,7 +52,7 @@ int StSum(string str){
 }
 
 int Lestr(string str){
-    if(str.length() > 2 and str.length()%32 == 0)
+    if(str.length() > 2 and stoi(str)%32 == 0)
     {
         return 1;
     }
