@@ -8,9 +8,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/azard/hueta/Infotecs/src/funktion.cpp" "CMakeFiles/MyLibrary.dir/src/funktion.cpp.o" "gcc" "CMakeFiles/MyLibrary.dir/src/funktion.cpp.o.d"
-  "/home/azard/hueta/Infotecs/src/prog1.cpp" "CMakeFiles/MyLibrary.dir/src/prog1.cpp.o" "gcc" "CMakeFiles/MyLibrary.dir/src/prog1.cpp.o.d"
-  "" "libMyLibrary.so" "gcc" "CMakeFiles/MyLibrary.dir/link.d"
+  "/home/azard/hueta/Infotecs/src/prog1.cpp" "CMakeFiles/prog1.dir/src/prog1.cpp.o" "gcc" "CMakeFiles/prog1.dir/src/prog1.cpp.o.d"
+  "" "prog1" "gcc" "CMakeFiles/prog1.dir/link.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

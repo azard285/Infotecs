@@ -85,51 +85,6 @@ rebuild_cache:
 rebuild_cache/fast: rebuild_cache
 .PHONY : rebuild_cache/fast
 
-# Special rule for the target list_install_components
-list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Available install components are: \"Unspecified\""
-.PHONY : list_install_components
-
-# Special rule for the target list_install_components
-list_install_components/fast: list_install_components
-.PHONY : list_install_components/fast
-
-# Special rule for the target install
-install: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install
-
-# Special rule for the target install
-install/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install/fast
-
-# Special rule for the target install/local
-install/local: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local
-
-# Special rule for the target install/local
-install/local/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local/fast
-
-# Special rule for the target install/strip
-install/strip: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip
-
-# Special rule for the target install/strip
-install/strip/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip/fast
-
 # The main all target
 all: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/azard/hueta/Infotecs/CMakeFiles /home/azard/hueta/Infotecs//CMakeFiles/progress.marks
@@ -162,24 +117,37 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named MyLibrary
+# Target rules for targets named funktion
 
 # Build rule for target.
-MyLibrary: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 MyLibrary
-.PHONY : MyLibrary
+funktion: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 funktion
+.PHONY : funktion
 
 # fast build rule for target.
-MyLibrary/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyLibrary.dir/build.make CMakeFiles/MyLibrary.dir/build
-.PHONY : MyLibrary/fast
+funktion/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/funktion.dir/build.make CMakeFiles/funktion.dir/build
+.PHONY : funktion/fast
+
+#=============================================================================
+# Target rules for targets named prog1
+
+# Build rule for target.
+prog1: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 prog1
+.PHONY : prog1
+
+# fast build rule for target.
+prog1/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/prog1.dir/build.make CMakeFiles/prog1.dir/build
+.PHONY : prog1/fast
 
 src/funktion.o: src/funktion.cpp.o
 .PHONY : src/funktion.o
 
 # target to build an object file
 src/funktion.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyLibrary.dir/build.make CMakeFiles/MyLibrary.dir/src/funktion.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/funktion.dir/build.make CMakeFiles/funktion.dir/src/funktion.cpp.o
 .PHONY : src/funktion.cpp.o
 
 src/funktion.i: src/funktion.cpp.i
@@ -187,7 +155,7 @@ src/funktion.i: src/funktion.cpp.i
 
 # target to preprocess a source file
 src/funktion.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyLibrary.dir/build.make CMakeFiles/MyLibrary.dir/src/funktion.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/funktion.dir/build.make CMakeFiles/funktion.dir/src/funktion.cpp.i
 .PHONY : src/funktion.cpp.i
 
 src/funktion.s: src/funktion.cpp.s
@@ -195,7 +163,7 @@ src/funktion.s: src/funktion.cpp.s
 
 # target to generate assembly for a file
 src/funktion.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyLibrary.dir/build.make CMakeFiles/MyLibrary.dir/src/funktion.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/funktion.dir/build.make CMakeFiles/funktion.dir/src/funktion.cpp.s
 .PHONY : src/funktion.cpp.s
 
 src/prog1.o: src/prog1.cpp.o
@@ -203,7 +171,7 @@ src/prog1.o: src/prog1.cpp.o
 
 # target to build an object file
 src/prog1.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyLibrary.dir/build.make CMakeFiles/MyLibrary.dir/src/prog1.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/prog1.dir/build.make CMakeFiles/prog1.dir/src/prog1.cpp.o
 .PHONY : src/prog1.cpp.o
 
 src/prog1.i: src/prog1.cpp.i
@@ -211,7 +179,7 @@ src/prog1.i: src/prog1.cpp.i
 
 # target to preprocess a source file
 src/prog1.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyLibrary.dir/build.make CMakeFiles/MyLibrary.dir/src/prog1.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/prog1.dir/build.make CMakeFiles/prog1.dir/src/prog1.cpp.i
 .PHONY : src/prog1.cpp.i
 
 src/prog1.s: src/prog1.cpp.s
@@ -219,7 +187,7 @@ src/prog1.s: src/prog1.cpp.s
 
 # target to generate assembly for a file
 src/prog1.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyLibrary.dir/build.make CMakeFiles/MyLibrary.dir/src/prog1.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/prog1.dir/build.make CMakeFiles/prog1.dir/src/prog1.cpp.s
 .PHONY : src/prog1.cpp.s
 
 # Help Target
@@ -229,12 +197,9 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
-	@echo "... install"
-	@echo "... install/local"
-	@echo "... install/strip"
-	@echo "... list_install_components"
 	@echo "... rebuild_cache"
-	@echo "... MyLibrary"
+	@echo "... funktion"
+	@echo "... prog1"
 	@echo "... src/funktion.o"
 	@echo "... src/funktion.i"
 	@echo "... src/funktion.s"

@@ -1,7 +1,4 @@
-/home/azard/hueta/Infotecs/CMakeFiles/MyLibrary.dir
+/home/azard/hueta/Infotecs/CMakeFiles/funktion.dir
+/home/azard/hueta/Infotecs/CMakeFiles/prog1.dir
 /home/azard/hueta/Infotecs/CMakeFiles/edit_cache.dir
 /home/azard/hueta/Infotecs/CMakeFiles/rebuild_cache.dir
-/home/azard/hueta/Infotecs/CMakeFiles/list_install_components.dir
-/home/azard/hueta/Infotecs/CMakeFiles/install.dir
-/home/azard/hueta/Infotecs/CMakeFiles/install/local.dir
-/home/azard/hueta/Infotecs/CMakeFiles/install/strip.dir

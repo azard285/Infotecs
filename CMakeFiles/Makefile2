@@ -63,11 +63,13 @@ CMAKE_BINARY_DIR = /home/azard/hueta/Infotecs
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/MyLibrary.dir/all
+all: CMakeFiles/funktion.dir/all
+all: CMakeFiles/prog1.dir/all
 .PHONY : all
 
 # The main recursive "codegen" target.
-codegen: CMakeFiles/MyLibrary.dir/codegen
+codegen: CMakeFiles/funktion.dir/codegen
+codegen: CMakeFiles/prog1.dir/codegen
 .PHONY : codegen
 
 # The main recursive "preinstall" target.
@@ -75,40 +77,73 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/MyLibrary.dir/clean
+clean: CMakeFiles/funktion.dir/clean
+clean: CMakeFiles/prog1.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/MyLibrary.dir
+# Target rules for target CMakeFiles/funktion.dir
 
 # All Build rule for target.
-CMakeFiles/MyLibrary.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyLibrary.dir/build.make CMakeFiles/MyLibrary.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyLibrary.dir/build.make CMakeFiles/MyLibrary.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/azard/hueta/Infotecs/CMakeFiles --progress-num=1,2,3 "Built target MyLibrary"
-.PHONY : CMakeFiles/MyLibrary.dir/all
+CMakeFiles/funktion.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/funktion.dir/build.make CMakeFiles/funktion.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/funktion.dir/build.make CMakeFiles/funktion.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/azard/hueta/Infotecs/CMakeFiles --progress-num=1,2 "Built target funktion"
+.PHONY : CMakeFiles/funktion.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/MyLibrary.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/azard/hueta/Infotecs/CMakeFiles 3
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/MyLibrary.dir/all
+CMakeFiles/funktion.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/azard/hueta/Infotecs/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/funktion.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/azard/hueta/Infotecs/CMakeFiles 0
-.PHONY : CMakeFiles/MyLibrary.dir/rule
+.PHONY : CMakeFiles/funktion.dir/rule
 
 # Convenience name for target.
-MyLibrary: CMakeFiles/MyLibrary.dir/rule
-.PHONY : MyLibrary
+funktion: CMakeFiles/funktion.dir/rule
+.PHONY : funktion
 
 # codegen rule for target.
-CMakeFiles/MyLibrary.dir/codegen:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyLibrary.dir/build.make CMakeFiles/MyLibrary.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/azard/hueta/Infotecs/CMakeFiles --progress-num=1,2,3 "Finished codegen for target MyLibrary"
-.PHONY : CMakeFiles/MyLibrary.dir/codegen
+CMakeFiles/funktion.dir/codegen:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/funktion.dir/build.make CMakeFiles/funktion.dir/codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/azard/hueta/Infotecs/CMakeFiles --progress-num=1,2 "Finished codegen for target funktion"
+.PHONY : CMakeFiles/funktion.dir/codegen
 
 # clean rule for target.
-CMakeFiles/MyLibrary.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyLibrary.dir/build.make CMakeFiles/MyLibrary.dir/clean
-.PHONY : CMakeFiles/MyLibrary.dir/clean
+CMakeFiles/funktion.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/funktion.dir/build.make CMakeFiles/funktion.dir/clean
+.PHONY : CMakeFiles/funktion.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/prog1.dir
+
+# All Build rule for target.
+CMakeFiles/prog1.dir/all: CMakeFiles/funktion.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/prog1.dir/build.make CMakeFiles/prog1.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/prog1.dir/build.make CMakeFiles/prog1.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/azard/hueta/Infotecs/CMakeFiles --progress-num=3,4 "Built target prog1"
+.PHONY : CMakeFiles/prog1.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/prog1.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/azard/hueta/Infotecs/CMakeFiles 4
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/prog1.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/azard/hueta/Infotecs/CMakeFiles 0
+.PHONY : CMakeFiles/prog1.dir/rule
+
+# Convenience name for target.
+prog1: CMakeFiles/prog1.dir/rule
+.PHONY : prog1
+
+# codegen rule for target.
+CMakeFiles/prog1.dir/codegen:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/prog1.dir/build.make CMakeFiles/prog1.dir/codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/azard/hueta/Infotecs/CMakeFiles --progress-num=3,4 "Finished codegen for target prog1"
+.PHONY : CMakeFiles/prog1.dir/codegen
+
+# clean rule for target.
+CMakeFiles/prog1.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/prog1.dir/build.make CMakeFiles/prog1.dir/clean
+.PHONY : CMakeFiles/prog1.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

@@ -1,24 +1,16 @@
 cmake_minimum_required(VERSION 3.10)
 
-# Указать имя проекта
-project(MyDynamicLibrary)
+# Укажите имя проекта
+project(MyLibrary)
 
-# Указать стандарт C++
-set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_CXX_STANDARD_REQUIRED True)
-
-# Указать пути к директориям
+# Укажите папку с заголовочными файлами
 include_directories(include)
 
-# Указать исходные файлы для библиотеки
-set(SOURCES
-    src/funktion.cpp
-    src/prog1.cpp
-)
+# Создайте динамическую библиотеку
+add_library(funktion SHARED src/funktion.cpp)
 
-# Создать динамическую библиотеку
-add_library(MyLibrary SHARED ${SOURCES})
+# Создайте исполняемую программу
+add_executable(prog1 src/prog1.cpp)
 
-# Указать опционально параметры установки
-install(TARGETS MyLibrary DESTINATION lib)
-install(FILES include/funktion.h DESTINATION include)
+# Свяжите исполняемую программу с библиотекой
+target_link_libraries(prog1 PRIVATE funktion)
