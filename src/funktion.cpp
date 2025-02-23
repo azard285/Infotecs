@@ -8,6 +8,7 @@ using namespace std;
 
 void sortKB(string &str)
 {
+    unique_lock<mutex> lock(mtx);
     vector<string> split;
 
     for (char c : str)
@@ -16,37 +17,41 @@ void sortKB(string &str)
         split.push_back(l);
     }
 
-    sort(split.begin(), split.end());
+    sort(split.begin(), split.end(), [](string a, string b){return a > b;});
 
-    int elem = str.length() % 2 == 0 ? str.length() : str.length() - 1;
-
-    for(int i = 1; i <= elem; i+=2)
+    for(int i = 0; i < split.size(); i++)
     {
+        if(stoi(split[i])%2 == 0)
+        {
         split[i] = "KB";
+        }
     }
 
     str = "";
+    all_data = "";
     for(const string& s : split) {
-        str += s; 
+        str += s;
+        all_data += s; 
     }
+    data_ready = true;
+    cv.notify_one();
 }
 
-int StSum(string str){
+string StSum(string str){
     int sum = 0;
     for (char c : str)
     {
         if(c < 48 and c > 57){
-            cerr << "Error: Uncorrect word, not always symbols are number";
-            abort();
+            continue;
         }
         sum += c - '0';
     }
 
-    return sum;
+    return to_string(sum);
 }
 
 int Lestr(string str){
-    if(str.length() > 2 and str.length()%32 == 0)
+    if(str.length() > 2 and stoi(str)%32 == 0)
     {
         return 1;
     }
