@@ -11,11 +11,9 @@
 using namespace std;
 
 void dop1(){
-        cerr << "fsdfsfefjkheorjthelrituhn\n";
     string str;
     cout << "Введите строку:" << endl;
     cin >> str;
-    cout << endl;
 
     if(str.length() > 64)
     {
@@ -25,8 +23,8 @@ void dop1(){
     for (char c : str)
     {
         if(c < 48 or c > 57){
-            cerr << "Error: Uncorrect word, not always symbols are number";
-            abort();
+            cerr << "Error: Uncorrect word, not always symbols are number\n";
+            exit(EXIT_FAILURE);
         }
     }
     sortKB(str);
@@ -37,9 +35,11 @@ void dop2(int new_socket){
     cv.wait(lock, []{return data_ready;});
     string str = all_data;
     all_data.clear();
+    lock.unlock();
 
     cout << "Поток 2, полученные данные: " << str << endl;
     string n = StSum(str);
+    cout << n << endl;
 
     send(new_socket, n.c_str(), n.length(), 0);
 }
@@ -49,7 +49,7 @@ int main()
     int server_fd, new_socket;
     struct sockaddr_in address;
     int addrlen = sizeof(address);
-
+while(1){
     if ((server_fd = socket(AF_INET, SOCK_STREAM, 0)) == 0) {
         cerr << "socket failed" << endl;
         return -1;
@@ -65,27 +65,30 @@ int main()
     close(server_fd);
         return -1;
     }
-    while(1){
-
     if (listen(server_fd, 3) < 0) {
         perror("listen failed");
     close(server_fd);
-    close(new_socket);
-        return -1;
+        continue;
     }
+    while(1){
+
         if ((new_socket = accept(server_fd, (struct sockaddr *)&address, (socklen_t*)&addrlen)) < 0) {
             perror("accept failed");
         }
+        cout << "sdsdsd\n";
         thread firthe(dop1);
         thread secthe(dop2, server_fd);
+        cout << "sdsdsd\n";
 
         firthe.join();
         secthe.join();
+        cerr << "sdsijfhgfjdsd\n";
+    close(new_socket);
 
     }
 
     close(server_fd);
-    close(new_socket);
+}
         return 0;
 }
 

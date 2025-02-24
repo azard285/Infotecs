@@ -26,26 +26,31 @@ int main() {
 
         if (inet_pton(AF_INET, "127.0.0.1", &serv_addr.sin_addr) <= 0) {
             perror("Invalid address/ Address not supported");
-            return -1;
+            close(sock);
+            
         }
-
-        
 
     while(1){
-        
         if (connect(sock, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) < 0) {
             perror("connect failed");
-            return -1;
+            close(sock);
+            sleep(5);
+            continue;
         }
+    
+        
         recv(sock, buffer, BUFFER_SIZE, 0);
+        cout << buffer << endl;
         if (Lestr(buffer)) {
             cout << "Получено:" << buffer << endl;
         }
         else{
-            cout << "Ошибка, введено не то правильное число" << endl;
+            cout << "Ошибка, введено не то правильное число" << buffer << endl;
+            continue;
         }
-    }
+    
 
     close(sock);
+    }
     return 0;
 }

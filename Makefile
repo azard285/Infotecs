@@ -3,7 +3,7 @@ CXX = g++
 CXXFLAGS = -Wall -g -Iinclude -fPIC
 
 # Исходные файлы
-SRCS = src/prog1.cpp src/prog2.cpp include/funktion.cpp
+SRCS = src1/prog1.cpp src2/prog2.cpp include/funktion.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 # Имя библиотеки
@@ -20,10 +20,10 @@ $(LIB): include/funktion.o
 	$(CXX) -shared -o $@ $^
 
 # Правило для сборки исполняемых файлов
-prog1: src/prog1.o $(LIB)
+prog1: src1/prog1.o $(LIB)
 	$(CXX) -o $@ $^ -L. -lfunktion -Wl,-rpath=.
 
-prog2: src/prog2.o $(LIB)
+prog2: src2/prog2.o $(LIB)
 	$(CXX) -o $@ $^ -L. -lfunktion -Wl,-rpath=.
 
 # Правило для компиляции .cpp в .o

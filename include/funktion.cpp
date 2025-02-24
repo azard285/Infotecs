@@ -19,7 +19,7 @@ void sortKB(string &str)
 
     sort(split.begin(), split.end(), [](string a, string b){return a > b;});
 
-    for(int i = 0; i < split.size(); i++)
+    for(size_t i = 0; i < split.size(); i++)
     {
         if(stoi(split[i])%2 == 0)
         {
@@ -35,13 +35,14 @@ void sortKB(string &str)
     }
     data_ready = true;
     cv.notify_one();
+    lock.unlock();
 }
 
 string StSum(string str){
     int sum = 0;
     for (char c : str)
     {
-        if(c < 48 and c > 57){
+        if(c < 48 or c > 57){
             continue;
         }
         sum += c - '0';
