@@ -33,3 +33,6 @@ prog2: src2/prog2.o $(LIB)
 # Очистка
 clean:
 	rm -f $(OBJS) $(EXE) $(LIB)
+
+run:
+	bash ./run.sh
