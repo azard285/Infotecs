@@ -11,7 +11,7 @@ mutex mtx;
 condition_variable cv;
 bool data_ready = false;
 string all_data;
-const int PORT = rand()%3024 + 8000;
+const int PORT = 8000;
 
 
 void sortKB(string &str);

@@ -2,6 +2,7 @@
 #include <string>
 #include <thread>
 #include <mutex>
+#include <condition_variable>
 #include <cstring>
 #include <arpa/inet.h>
 #include <sys/socket.h>
@@ -10,46 +11,46 @@
 
 using namespace std;
 
-void dop1(){
+void dop1() {
     string str;
     cout << "Введите строку:" << endl;
     cin >> str;
 
-    if(str.length() > 64)
-    {
-            cerr << "Error: so long word. Can be >64";
-            abort();
+    if (str.length() > 64) {
+        cerr << "Error: so long word. Can be >64" << endl;
+        return;
     }
-    for (char c : str)
-    {
-        if(c < 48 or c > 57){
-            cerr << "Error: Uncorrect word, not always symbols are number\n";
-            exit(EXIT_FAILURE);
+    for (char c : str) {
+        if (c < 48 || c > 57) {
+            cerr << "Error: Uncorrect word, not always symbols are number" << endl;
+            return;
         }
     }
     sortKB(str);
+
 }
 
-void dop2(int new_socket){
+void dop2(int new_socket) {
     unique_lock<mutex> lock(mtx);
-    cv.wait(lock, []{return data_ready;});
+    cv.wait(lock, [] { return data_ready; });
     string str = all_data;
     all_data.clear();
+    data_ready = false;
     lock.unlock();
 
     cout << "Поток 2, полученные данные: " << str << endl;
     string n = StSum(str);
-    cout << n << endl;
+    cout << "Результат вычислений: " << n << endl;
 
     send(new_socket, n.c_str(), n.length(), 0);
+    close(new_socket);
 }
 
-int main()
-{
+int main() {
     int server_fd, new_socket;
     struct sockaddr_in address;
     int addrlen = sizeof(address);
-while(1){
+
     if ((server_fd = socket(AF_INET, SOCK_STREAM, 0)) == 0) {
         cerr << "socket failed" << endl;
         return -1;
@@ -61,34 +62,36 @@ while(1){
     address.sin_port = htons(PORT);
 
     if (bind(server_fd, (struct sockaddr *)&address, sizeof(address)) < 0) {
-        cerr << "bind failed" << strerror(errno) << endl;
-    close(server_fd);
+        cerr << "bind failed: " << strerror(errno) << endl;
+        close(server_fd);
         return -1;
     }
-    if (listen(server_fd, 3) < 0) {
-        perror("listen failed");
-    close(server_fd);
-        continue;
-    }
-    while(1){
 
+    if (listen(server_fd, 3) < 0) {
+        cerr << "listen failed" << endl;
+        close(server_fd);
+        return -1;
+    }
+
+    cout << "Server start, wait connect..." << endl;
+
+    while (true) {
         if ((new_socket = accept(server_fd, (struct sockaddr *)&address, (socklen_t*)&addrlen)) < 0) {
-            perror("accept failed");
+            cerr << "Error: not connect to client" << endl;
+            continue;
         }
-        cout << "sdsdsd\n";
+
+        cout << "Connect to client!" << endl;
+
         thread firthe(dop1);
-        thread secthe(dop2, server_fd);
-        cout << "sdsdsd\n";
+        thread secthe(dop2, new_socket);
 
         firthe.join();
         secthe.join();
-        cerr << "sdsijfhgfjdsd\n";
-    close(new_socket);
 
+        cout << "Processing done, wait next client..." << endl;
     }
 
     close(server_fd);
+    return 0;
 }
-        return 0;
-}
-
