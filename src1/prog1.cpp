@@ -13,7 +13,7 @@ using namespace std;
 
 void dop1() {
     string str;
-    cout << "Введите строку:" << endl;
+    cout << "Введите строку состоящую из цифр и не больше 64:" << endl;
     cin >> str;
 
     if (str.length() > 64) {
